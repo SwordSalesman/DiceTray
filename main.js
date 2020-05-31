@@ -170,8 +170,19 @@ function rollDice() {
 function playDiceSound() {
     if (document.getElementById("mutebutton").classList.contains("glyphicon-volume-off"))
         return;
-    
-    var audio = new Audio('sounds/dice-roll-single.mp3');
+
+    switch (Math.floor(Math.random()*2) + 1) {
+        case 1:
+            var audio = new Audio('sounds/dice-roll-single.mp3');
+            audio.play();
+            break;
+        case 2:
+            var audio = new Audio('sounds/dice-roll-single2.wav');
+            audio.play();
+            break;
+    }
+
+    audio = new Audio('sounds/dice-roll-single.mp3');
     audio.play();
 }
 

@@ -176,6 +176,10 @@ html {
     transition: 0.2s;
 }
 
+.action-button:hover, .modifier-button:hover {
+    filter: brightness(130%);
+}
+
 .modifier-button {
     height: 24px;
     width: 30px;
