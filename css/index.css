@@ -1,0 +1,281 @@
+html {
+    background-color: rgb(180, 180, 180);
+}
+
+/*************** Top (draggable) bar ***************/
+
+#topframe {
+    height: 25px;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    padding: 2px;
+    background-color: rgb(149, 149, 149);
+    display: inline-block;
+    color: rgb(26, 26, 26);
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    -webkit-app-region: drag
+}
+
+.frame-button {  
+    display: block;
+    transition: 0.1s;
+    border-radius: 25%;
+    color: rgb(121, 121, 121);
+    background-color: rgb(180, 180, 180);
+}
+
+#closebutton {
+    position: absolute;
+    right: 5px;
+    top: 30px;
+}
+
+#mutebutton {
+    position: absolute;
+    left: 5px;
+    top: 30px;
+}
+
+#helpbutton {
+    position: absolute;
+    left: 30px;
+    top: 30px;
+    opacity: 0;
+}
+
+.frame-button:hover {
+    filter: brightness(80%);
+}
+
+/*************** Dice tray ***************/
+
+#dicetray {
+    height: auto;
+    width: 100%;
+    background-color: rgb(26, 26, 26);
+}
+
+#rollqueue {
+    height: auto;
+    min-height: 150px;
+    width: 100%;
+    background-color: rgb(180, 180, 180);
+    padding: 0px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#rolltotal {
+    width: 100%;
+    position: absolute;
+    top: 103px;
+    z-index: 1000;
+    text-align: center;
+}
+
+#total-display {
+    width: 100%;
+}
+
+.tray-number {
+    height: 55px;
+    width: 55px;
+    display: inline-block;
+    position: relative;
+    font-size: 25px;
+    color: rgb(26, 26, 26);
+    text-align: center;
+    font-weight: bolder;
+    padding: 10px 0;
+}
+
+/*************** Roll options ***************/
+
+#rolloptions {
+    width: 100%;
+    display: inline-block;
+    padding: 10px;
+    background-color: rgb(180, 180, 180);
+    text-align: center;
+}
+
+.modifier-selectors {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*************** Slider ***************/
+
+.slider-container {
+    width: 230px; /* Width of the outside container */
+    display: inline-block;
+    margin-top: 10px;
+}
+
+/* The slider itself */
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    position: relative;
+    top: 7px;
+    border-radius: 3px;  
+    background: #d3d3d3;
+    outline: none;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+  
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%; 
+    background: darkred;
+    cursor: pointer;
+}
+  
+.slider::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: darkred;
+    cursor: pointer;
+}
+
+/*************** Action bar ***************/
+
+#actionbar {
+    width: 100%;
+    display: inline-block;
+    padding: 10px;
+    background-color: rgb(26, 26, 26);
+    text-align: center;
+}
+
+/*************** Glyph Buttons ***************/
+
+.action-button, .modifier-button{
+    height: 36px;
+    width: 60px;
+    padding: 7px;
+    margin: 4px;
+    background-color: darkred;
+    color: white;
+    border: none;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    transition: 0.2s;
+}
+
+.modifier-button {
+    height: 24px;
+    width: 30px;
+    padding: 0px;
+}
+
+#rollbutton {
+    width: 150px;
+}
+
+.glyphicon {
+    transition: 0.2s;
+    font-size: 20px;
+    color: white;
+}
+
+.glyphicon-plus, .glyphicon-minus {
+    text-shadow: none;
+    opacity: 0;
+}
+
+.dice-button:hover .glyphicon {
+    opacity: 1;
+}
+
+.button-text {
+    font-size: 15px;
+    color: white;
+    opacity: 0;
+    transition: 0.2s;
+    position: relative;
+    top: -33px;
+}
+
+.button-subtitle {
+    font-size: 11px;
+}
+
+/*
+.action-button:hover .button-text, .modifier-button:hover .button-text {
+    opacity: 1;
+}
+
+.action-button:hover .glyphicon, .modifier-button:hover .glyphicon {
+    opacity: 0;
+}
+*/
+
+/*************** Dice buttons ***************/
+
+.glyphicon-minus, .dice-value {
+    position: absolute;
+    width: 55px;
+}
+
+.dice-button {
+    height: 55px;
+    width: 55px;
+    display: inline-block;
+    background-size: 100%;
+    transition: 0.1s;
+    font-size: 25px;
+    color: rgb(26, 26, 26);
+    text-align: center;
+    font-weight: bolder;
+    padding: 10px 0;
+    text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+}
+
+#addD4button, .d4 {
+    background: url("../icons/d4-icon.png") no-repeat;
+    background-size: 100%;
+}
+
+#addD6button, .d6 {
+    background: url("../icons/d6-icon.png") no-repeat;
+    background-size: 100%;
+}
+
+#addD8button, .d8 {
+    background: url("../icons/d8-icon.png") no-repeat;
+    background-size: 100%;
+}
+
+#addD10button, .d10 {
+    background: url("../icons/d10-icon.png") no-repeat;
+    background-size: 100%;
+}
+
+#addD100button, .d100 {
+    background: url("../icons/d100-icon.png") no-repeat;
+    background-size: 100%;
+}
+
+#addD12button, .d12 {
+    background: url("../icons/d12-icon.png") no-repeat;
+    background-size: 100%;
+}
+
+#addD20button, .d20 {
+    background: url("../icons/d20-icon.png") no-repeat;
+    background-size: 100%;
+}

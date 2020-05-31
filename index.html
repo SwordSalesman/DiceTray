@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/index.css">
+    <script type="text/javascript" src="main.js"></script>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  </head>
+<body>
+  <div id="topframe">Dice Tray
+    <div id="mutebutton" class="frame-button glyphicon glyphicon-volume-up" onclick="toggleMute()"></div>
+    <div id="helpbutton" class="frame-button glyphicon glyphicon-info-sign"></div>
+    <div id="closebutton" class="frame-button glyphicon glyphicon-remove" onclick="closeProgram()"></div>
+  </div>
+  
+  <div id="dicetray">
+    <div id="rollqueue"></div>
+    <div id="rolltotal"></div>
+  </div>
+
+  <div id="rolloptions">
+    <div id="dicebag">
+      <div class="dice-button d4" onclick="addDice(4)"><div class="glyphicon glyphicon-plus"></div></div>
+      <div class="dice-button d6" onclick="addDice(6)"><div class="glyphicon glyphicon-plus"></div></div>
+      <div class="dice-button d8" onclick="addDice(8)"><div class="glyphicon glyphicon-plus"></div></div>
+      <div class="dice-button d10" onclick="addDice(10)"><div class="glyphicon glyphicon-plus"></div></div>
+      <div class="dice-button d100" onclick="addDice(100)"><div class="glyphicon glyphicon-plus"></div></div>
+      <div class="dice-button d12" onclick="addDice(12)"><div class="glyphicon glyphicon-plus"></div></div>
+      <div class="dice-button d20" onclick="addDice(20)"><div class="glyphicon glyphicon-plus"></div></div>
+    </div>
+    <div id="modifier-selectors">
+      <div class="modifier-button" onclick="takeOne()">
+        <div class="glyphicon glyphicon-menu-left"></div>
+        <div class="button-text">
+          <div class="button-title">-1</div><div class ="button-subtitle">(left/down)</div>
+        </div>
+      </div>
+      <div class="slider-container">
+        <input type="range" min="-20" max="20" value="0" class="slider" id="modifier-slider" onchange="checkModifier()"></input>
+      </div>
+      <div class="modifier-button" onclick="addOne()">
+        <div class="glyphicon glyphicon-menu-right"></div>
+        <div class="button-text">
+          <div class="button-title">+1</div><div class ="button-subtitle">(right/up)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="actionbar">
+    <div id="clearbutton" class="action-button" onclick="clearQueue()">
+      <div class="glyphicon glyphicon-trash"></div>
+      <div class="button-text">
+          <div class="button-title">Clear</div><div class ="button-subtitle">(escape)</div>
+      </div>
+    </div>
+    <div id="rollbutton" class="action-button" onclick="rollDice()">
+      <div class="glyphicon glyphicon-play"></div>
+      <div class="button-text">
+        <div class="button-title">Roll</div><div class ="button-subtitle">(space/enter)</div>
+      </div>
+    </div>
+    <div id="historybutton" class="action-button" onclick="toggleHistory()">
+      <div class="glyphicon glyphicon-time"></div>
+      <div class="button-text">
+        <div class="button-title">History</div><div class ="button-subtitle">(shift)</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

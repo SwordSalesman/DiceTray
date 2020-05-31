@@ -1,0 +1,17 @@
+{
+  "name": "dicetray",
+  "version": "1.0.0",
+  "description": "A dice rolling app with the bare essentials made easy",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Luke Cannon",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^9.0.0",
+    "electron-packager": "^14.2.1"
+  }
+}
