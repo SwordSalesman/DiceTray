@@ -18,8 +18,20 @@ function createWindow () {
 }
 
 app.whenReady().then(() => {
-    createWindow()
+    createWindow();
 })
+
+var loaded = false;
+
+function bodyLoaded(doc) {
+    if (loaded) {
+        return;
+    }
+    loaded = true;
+
+    document.getElementById("modifier-slider").addEventListener('input', checkModifier, false);
+    
+}
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
