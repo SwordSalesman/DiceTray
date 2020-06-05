@@ -43,7 +43,6 @@ html {
     position: absolute;
     left: 30px;
     top: 30px;
-    opacity: 0;
 }
 
 .frame-button:hover {
@@ -215,18 +214,18 @@ html {
 }
 
 .button-subtitle {
-    font-size: 11px;
+    font-size: 10px;
 }
 
-/*
-.action-button:hover .button-text, .modifier-button:hover .button-text {
+
+.show-text .button-text {
     opacity: 1;
 }
 
-.action-button:hover .glyphicon, .modifier-button:hover .glyphicon {
+.show-text .glyphicon {
     opacity: 0;
 }
-*/
+
 
 /*************** Dice buttons ***************/
 

@@ -9,9 +9,12 @@
   </head>
 <body onclick="bodyLoaded()">
   <div id="topframe">Dice Tray
-    <div id="mutebutton" class="frame-button glyphicon glyphicon-volume-up" onclick="toggleMute()"></div>
-    <div id="helpbutton" class="frame-button glyphicon glyphicon-info-sign"></div>
+    <div id="mutebutton" class="frame-button glyphicon glyphicon-volume-off" onclick="toggleMute()"></div>
+    <div id="helpbutton" class="frame-button glyphicon glyphicon-info-sign help-off" onclick="toggleHelp()"></div>
     <div id="closebutton" class="frame-button glyphicon glyphicon-remove" onclick="closeProgram()"></div>
+  </div>
+
+  <div id="historytab" class="hidden">
   </div>
   
   <div id="dicetray">
@@ -30,7 +33,7 @@
       <div class="dice-button d20" onclick="addDice(20)"><div class="glyphicon glyphicon-plus"></div></div>
     </div>
     <div id="modifier-selectors">
-      <div class="modifier-button" onclick="takeOne()">
+      <div class="modifier-button glyph-button" onclick="takeOne()">
         <div class="glyphicon glyphicon-menu-left"></div>
         <div class="button-text">
           <div class="button-title">-1</div><div class ="button-subtitle">(left/down)</div>
@@ -39,7 +42,7 @@
       <div class="slider-container">
         <input type="range" min="-20" max="20" value="0" class="slider" id="modifier-slider" onchange="checkModifier()"></input>
       </div>
-      <div class="modifier-button" onclick="addOne()">
+      <div class="modifier-button glyph-button" onclick="addOne()">
         <div class="glyphicon glyphicon-menu-right"></div>
         <div class="button-text">
           <div class="button-title">+1</div><div class ="button-subtitle">(right/up)</div>
@@ -49,19 +52,19 @@
   </div>
 
   <div id="actionbar">
-    <div id="clearbutton" class="action-button" onclick="clearQueue()">
+    <div id="clearbutton" class="action-button glyph-button" onclick="clearQueue()">
       <div class="glyphicon glyphicon-trash"></div>
       <div class="button-text">
           <div class="button-title">Clear</div><div class ="button-subtitle">(escape)</div>
       </div>
     </div>
-    <div id="rollbutton" class="action-button" onclick="rollDice()">
+    <div id="rollbutton" class="action-button glyph-button" onclick="rollDice()">
       <div class="glyphicon glyphicon-play"></div>
       <div class="button-text">
         <div class="button-title">Roll</div><div class ="button-subtitle">(space/enter)</div>
       </div>
     </div>
-    <div id="historybutton" class="action-button" onclick="toggleHistory()">
+    <div id="historybutton" class="action-button glyph-button" onclick="toggleHistory()">
       <div class="glyphicon glyphicon-time"></div>
       <div class="button-text">
         <div class="button-title">History</div><div class ="button-subtitle">(shift)</div>

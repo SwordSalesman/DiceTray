@@ -11,8 +11,8 @@ function createWindow () {
         }
     })
 
-    // load the index.html of the app.
-    win.loadFile('index.html');
+    // load the DiceTray.html of the app.
+    win.loadFile('DiceTray.html');
     win.setTitle("DiceTray");
     win.webContents.openDevTools();
 }
@@ -66,6 +66,28 @@ function toggleMute() {
     else {
         muteButton.classList.remove("glyphicon-volume-off");
         muteButton.classList.add("glyphicon-volume-up");
+    }
+}
+
+function toggleHelp() {
+    var buttons = document.getElementsByClassName("glyph-button");
+    var helpButton = document.getElementById("helpbutton");
+    
+    if (helpButton.classList.contains("help-off")) {
+        helpButton.classList.remove("help-off");
+        helpButton.classList.add("help-on");
+        for (buttonCount = 0; buttonCount < buttons.length; buttonCount++) {
+            buttons[buttonCount].classList.add("show-text");
+        }
+    }
+    else {
+        helpButton.classList.remove("help-on");
+        helpButton.classList.add("help-off");
+        for (buttonCount = 0; buttonCount < buttons.length; buttonCount++) {
+            if (buttons[buttonCount].classList.contains("show-text")) {
+                buttons[buttonCount].classList.remove("show-text");
+            }
+        }
     }
 }
 
