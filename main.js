@@ -14,7 +14,7 @@ function createWindow () {
     // load the DiceTray.html of the app.
     win.loadFile('DiceTray.html');
     win.setTitle("DiceTray");
-    win.webContents.openDevTools();
+    //win.webContents.openDevTools();
 }
 
 app.whenReady().then(() => {
@@ -56,9 +56,7 @@ function closeProgram() {
     close();
 }
 
-function toggleMute() {
-    var muteButton = document.getElementById("mutebutton");
-    
+function toggleMute(muteButton) {
     if (muteButton.classList.contains("glyphicon-volume-up")) {
         muteButton.classList.remove("glyphicon-volume-up");
         muteButton.classList.add("glyphicon-volume-off");
@@ -69,9 +67,8 @@ function toggleMute() {
     }
 }
 
-function toggleHelp() {
+function toggleHelp(helpButton) {
     var buttons = document.getElementsByClassName("glyph-button");
-    var helpButton = document.getElementById("helpbutton");
     
     if (helpButton.classList.contains("help-off")) {
         helpButton.classList.remove("help-off");
@@ -165,7 +162,9 @@ function clearOldValues() {
 
     var queuedDice = document.getElementsByClassName("queued-dice");
     for (diceCounter = 0; diceCounter < queuedDice.length; diceCounter++) {
-        queuedDice[diceCounter].childNodes[0].textContent = "";
+        var valueElement = queuedDice[diceCounter].childNodes[0];
+        if (valueElement != null)
+            valueElement.textContent = "";
     }
 }
 
@@ -180,7 +179,16 @@ function clearQueue() {
 }
 
 function toggleHistory() {
-    alert("Feature not yet implemented!");
+    var historyTab = document.getElementById("historycontainer");
+
+    if (historyTab.classList.contains("hide-history")) {
+        historyTab.classList.add("show-history");
+        historyTab.classList.remove("hide-history");
+    }
+    else {
+        historyTab.classList.add("hide-history");
+        historyTab.classList.remove("show-history");
+    }
 }
 
 // *********************** Rolling ***********************
@@ -191,14 +199,59 @@ function rollDice() {
 
     var queuedDice = document.getElementsByClassName("queued-dice");
     var total = setDiceResults(queuedDice);
-    var modifier = (Number)(document.getElementById("modifier-slider").value);
+    var modifierElement = document.getElementById("modifier-slider");
+    var modifier = (Number)(modifierElement.value);
     total = total + modifier;
 
-    var totalDisplay = document.createElement("div");
-    totalDisplay.classList.add("tray-number");
-    totalDisplay.setAttribute("id", "total-display");
-    totalDisplay.innerHTML = "= " + total;
+    var totalDisplay = makeTrayNumber("total-display", "= "+total);
     document.getElementById("rolltotal").appendChild(totalDisplay);
+
+    var prevTotal = makeTrayNumber("prev-total", "= "+total);
+    var prevModifier = makeTrayNumber("prev-modifier", modifier);
+
+    logRoll(queuedDice, prevModifier, prevTotal);
+}
+
+function logRoll(dice, modifier, total) {
+    clearOldLog(); // Ensures no more than x logs are kept
+    var rollHistory = document.getElementById("rollhistory");
+
+    var newLog = document.createElement("div");
+    newLog.classList.add("previous-roll");
+
+    for (diceCount = 0; diceCount < dice.length; diceCount++) {
+        var loggedDie = document.createElement("div");
+        loggedDie.classList.add("dice-button", "d" + getDiceSize(dice[diceCount]), "logged-dice");
+        loggedDie.appendChild(dice[diceCount].childNodes[0].cloneNode(true));
+
+        newLog.appendChild(loggedDie);
+    }
+    modifier.classList.add("logged-number");
+    total.classList.add("logged-number");
+    newLog.appendChild(modifier);
+    newLog.appendChild(total);
+
+    rollHistory.insertBefore(newLog, rollHistory.firstChild);
+}
+
+function clearOldLog() {
+    var previousRolls = document.getElementsByClassName("previous-roll");
+    if (previousRolls.length > 4) {
+        previousRolls[4].remove();
+    }
+}
+
+function makeTrayNumber(id, value) {
+    var element = document.createElement("div");
+    element.classList.add("tray-number");
+    element.setAttribute("id", id);
+
+    if (!isNaN(value) && (Number)(value) >= 0) { // If value is a negative number
+            value = "+" + value;
+    }
+
+    element.innerHTML = value;
+    return element;
 }
 
 function playDiceSound() {

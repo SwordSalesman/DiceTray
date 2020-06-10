@@ -9,12 +9,15 @@
   </head>
 <body onclick="bodyLoaded()">
   <div id="topframe">Dice Tray
-    <div id="mutebutton" class="frame-button glyphicon glyphicon-volume-off" onclick="toggleMute()"></div>
-    <div id="helpbutton" class="frame-button glyphicon glyphicon-info-sign help-off" onclick="toggleHelp()"></div>
-    <div id="closebutton" class="frame-button glyphicon glyphicon-remove" onclick="closeProgram()"></div>
+    <div id="mutebutton" class="frame-button glyphicon glyphicon-volume-off" onclick="toggleMute(this)"></div>
+    <div id="helpbutton" class="frame-button glyphicon glyphicon-info-sign help-off" onclick="toggleHelp(this)"></div>
+    <div id="closebutton" class="frame-button glyphicon glyphicon-remove" onclick="closeProgram(this)"></div>
   </div>
 
-  <div id="historytab" class="hidden">
+  <div id="historycontainer" class="hide-history">
+    <div id="historytab" class="hide-history">
+      <div id="rollhistory"></div>
+    </div>
   </div>
   
   <div id="dicetray">

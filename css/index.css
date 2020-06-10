@@ -7,6 +7,7 @@ html {
 #topframe {
     height: 25px;
     width: 100%;
+    z-index: 100;
     position: absolute;
     top: 0px;
     padding: 2px;
@@ -73,7 +74,6 @@ html {
     width: 100%;
     position: absolute;
     top: 103px;
-    z-index: 1000;
     text-align: center;
 }
 
@@ -226,12 +226,14 @@ html {
     opacity: 0;
 }
 
-
 /*************** Dice buttons ***************/
 
 .glyphicon-minus, .dice-value {
-    position: absolute;
     width: 55px;
+}
+
+.dice-value {
+    padding: 10px 0;
 }
 
 .dice-button {
@@ -242,10 +244,16 @@ html {
     transition: 0.1s;
     font-size: 25px;
     color: rgb(26, 26, 26);
-    text-align: center;
+    justify-content: center;
     font-weight: bolder;
-    padding: 10px 0;
     text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+}
+
+.logged-dice {
+    height: 40px;
+    width: 40px;
+    display: inline-flex;
+    font-size: 20px;
 }
 
 #addD4button, .d4 {
@@ -281,4 +289,49 @@ html {
 #addD20button, .d20 {
     background: url("../icons/d20-icon.png") no-repeat;
     background-size: 100%;
+}
+
+/*************** History ***************/
+
+#historycontainer {
+    height: 252px;
+    width: 155px;
+    position: fixed;
+    left: 50%;
+    top: 25px;
+
+    z-index: 10;
+    transform: translate(0px,-500px);
+    text-align: center;
+    transition: 0.4s;
+}
+
+#historytab {
+    height: 230px;
+    width: 310px;
+    position: relative;
+    left: -100%;
+    background-color: rgb(149, 149, 149);
+}
+
+#historycontainer.show-history {
+    transform: translate(0px,0px);
+}
+
+.previous-roll {
+    height: 45px;
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+}
+
+.logged-number {
+    height: auto;
+    width: auto;
+    font-size: 20px;
+    padding: 4px;
+}
+
+.logged-dice.dice-value {
+    padding: 4px 0px;
 }
