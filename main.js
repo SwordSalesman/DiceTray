@@ -105,7 +105,8 @@ function addDice(diceSize) {
 
     var rollQueue = document.getElementById("rollqueue");
     newDie.appendChild(valueDiv);
-    newDie.appendChild(minusDiv);
+    // Removed the minus icon for now
+    //newDie.appendChild(minusDiv);
     rollQueue.appendChild(newDie);
     checkModifier();
 }

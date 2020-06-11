@@ -198,10 +198,24 @@ html {
 .glyphicon-plus, .glyphicon-minus {
     text-shadow: none;
     opacity: 0;
+    margin: auto;
+}
+
+.glyphicon-plus {
+    margin-top: 16px;
+}
+
+.glyphicon.glyphicon-minus {
+    position: relative;
+    top: -15px;
 }
 
 .dice-button:hover .glyphicon {
     opacity: 1;
+}
+
+.dice-button:hover {
+    background-color: rgba(0, 0, 0, 0.123);
 }
 
 .button-text {
@@ -241,6 +255,7 @@ html {
     width: 55px;
     display: inline-block;
     background-size: 100%;
+    border-radius: 50%;
     transition: 0.1s;
     font-size: 25px;
     color: rgb(26, 26, 26);
